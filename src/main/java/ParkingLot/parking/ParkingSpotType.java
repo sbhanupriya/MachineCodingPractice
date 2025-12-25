@@ -1,6 +1,8 @@
 package ParkingLot.parking;
 
 public enum ParkingSpotType {
-    MEDIUM,
-    DISABILITY
+    STANDARD,
+    DISABILITY,
+    EV,
+    FAMILY
 }

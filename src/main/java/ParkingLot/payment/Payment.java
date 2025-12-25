@@ -3,18 +3,22 @@ package ParkingLot.payment;
 import java.math.BigDecimal;
 
 public class Payment {
-    private PaymentStrategy paymentStrategy;
     private BigDecimal amount;
-    private boolean success;
-    public Payment(PaymentStrategy paymentStrategy, BigDecimal amount){
-        this.paymentStrategy = paymentStrategy;
+    private boolean status;
+    private PaymentMode paymentMode;
+    private Integer retryCount;
+    public Payment(PaymentMode mode, BigDecimal amount){
         this.amount = amount;
+        this.paymentMode = mode;
+        this.retryCount = 0;
     }
-    public boolean processPayment(){
-       success = this.paymentStrategy.processPayment(amount);
-       return success;
+    public int getRetryCount(){
+        return retryCount;
     }
     public boolean isPaid(){
-        return success;
+        return status;
+    }
+    public void incrementRetryCount(){
+        retryCount++;
     }
 }

@@ -12,9 +12,7 @@ public class EntryGate {
         this.gate = number;
         parkingLotManager = ParkingLotManager.getInstance();
     }
-    public Ticket parking(Vehicle vehicle){
-       ParkingSpot parkingSpot =  parkingLotManager.park(vehicle);
-       Ticket ticket = new Ticket(vehicle,parkingSpot);
-       return ticket;
+    public Ticket parking(Vehicle vehicle) {
+       return parkingLotManager.park(vehicle);
     }
 }

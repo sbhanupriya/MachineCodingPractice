@@ -1,17 +1,32 @@
 package ParkingLot.parking;
 
+import ParkingLot.vehicle.Vehicle;
+
 public class ParkingSpot {
     private int id;
-    private int parkingLevel;
+    private Size size;
     private ParkingSpotType spotType;
-    private boolean isAvailable;
+    private Vehicle vehicle;
+    private ParkingSpotStatus status;
     public boolean isAvailable(){
-        return isAvailable;
+        return status==ParkingSpotStatus.AVAILABLE;
     }
-    public void setAvailable(boolean isAvailable){
-        this.isAvailable = isAvailable;
+    public void parkVehicle(Vehicle vehicle){
+        this.vehicle = vehicle;
+        status = ParkingSpotStatus.UNAVAILABLE;
+    }
+    public boolean canPark(Vehicle vehicle){
+       return isAvailable() && vehicle.getVehicleSize().getNumber()<= size.getNumber();
+    }
+    public void unparkVehicle(){
+        status = ParkingSpotStatus.AVAILABLE;
+        vehicle = null;
     }
     public ParkingSpotType parkingSpotType(){
         return spotType;
+    }
+    public ParkingSpot(int id, ParkingSpotType type){
+        this.id = id;
+        this.spotType = type;
     }
 }

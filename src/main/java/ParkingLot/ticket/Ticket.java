@@ -9,12 +9,8 @@ import java.time.OffsetDateTime;
 public class Ticket {
     private Vehicle vehicle;
     private ParkingSpot parkingSpot;
-    private Payment payment;
     private OffsetDateTime entryTime;
     private OffsetDateTime exitTime;
-    public boolean isPaid(){
-        return payment!=null && payment.isPaid();
-    }
     public ParkingSpot getParkingSpot(){
         return parkingSpot;
     }
@@ -26,8 +22,13 @@ public class Ticket {
     public void setExitTime(OffsetDateTime offsetDateTime){
         this.exitTime = offsetDateTime;
     }
-
-    public void setPayment(Payment payment){
-        this.payment = payment;
+    public OffsetDateTime getEntryTime(){
+        return entryTime;
+    }
+    public OffsetDateTime getExitTime(){
+        return exitTime;
+    }
+    public Vehicle getVehicle(){
+        return vehicle;
     }
 }
